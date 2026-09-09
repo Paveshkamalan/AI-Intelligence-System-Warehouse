@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Warehouse Safety Intelligence</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <div class="logo-icon">WS</div>
+
+                <div>
+                    <h2>Warehouse AI</h2>
+                    <span>Safety Intelligence</span>
+                </div>
+            </div>
+
+            <nav>
+
+                <a class="active">
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+                <a>
+                    <span>◉</span>
+                    Workers
+                </a>
+
+                <a>
+                    <span>⚠</span>
+                    Safety Events
+                </a>
+
+                <a>
+                    <span>◈</span>
+                    Risk Analysis
+                </a>
+
+            </nav>
+
+            <div class="system-status">
+
+                <div class="status-dot"></div>
+
+                <div>
+                    <strong>AI System Online</strong>
+                    <small>Monitoring active</small>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main">
+
+            <!-- HEADER -->
+
+            <header class="header">
+
+                <div>
+                    <h1>Safety Intelligence Center</h1>
+                    <p>Real-time warehouse risk monitoring</p>
+                </div>
+
+                <div class="header-right">
+
+                    <div class="live-indicator">
+                        <span></span>
+                        LIVE
+                    </div>
+
+                    <div class="time" id="currentTime">
+                        --:--
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- KPI CARDS -->
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-header">
+                        <span>Workers Tracked</span>
+                        <div class="stat-icon">👷</div>
+                    </div>
+
+                    <h2 id="workers">0</h2>
+
+                    <p>Unique workers detected</p>
+
+                </div>
+
+
+                <div class="stat-card danger">
+
+                    <div class="stat-header">
+                        <span>High Risk</span>
+                        <div class="stat-icon">⚠</div>
+                    </div>
+
+                    <h2 id="highRisk">0</h2>
+
+                    <p>Workers requiring attention</p>
+
+                </div>
+
+
+                <div class="stat-card warning">
+
+                    <div class="stat-header">
+                        <span>Predicted Hazards</span>
+                        <div class="stat-icon">◉</div>
+                    </div>
+
+                    <h2 id="predictedHazards">0</h2>
+
+                    <p>Potential hazards predicted</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-header">
+                        <span>Safety Events</span>
+                        <div class="stat-icon">⚡</div>
+                    </div>
+
+                    <h2 id="totalEvents">0</h2>
+
+                    <p>Detected safety events</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAIN GRID -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- RISK OVERVIEW -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Risk Overview</h3>
+                            <p>Current worker risk distribution</p>
+                        </div>
+
+                    </div>
+
+                    <div class="risk-bars">
+
+                        <div class="risk-row">
+
+                            <div>
+                                <span>Critical</span>
+                                <strong id="critical">0</strong>
+                            </div>
+
+                            <div class="bar">
+                                <div id="criticalBar"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-row">
+
+                            <div>
+                                <span>High</span>
+                                <strong id="high">0</strong>
+                            </div>
+
+                            <div class="bar">
+                                <div id="highBar"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-row">
+
+                            <div>
+                                <span>Medium</span>
+                                <strong id="medium">0</strong>
+                            </div>
+
+                            <div class="bar">
+                                <div id="mediumBar"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-row">
+
+                            <div>
+                                <span>Low</span>
+                                <strong id="low">0</strong>
+                            </div>
+
+                            <div class="bar">
+                                <div id="lowBar"></div>
+                            </div>
+
+                        </div>
+                        <section class="camera-section">
+
+                            <div class="section-header">
+
+                                <div>
+                                    <h2>Warehouse CCTV Network</h2>
+                                    <p>Real-time AI safety surveillance</p>
+                                </div>
+
+                                <span class="live-badge">
+                                    <span class="live-dot"></span>
+                                    LIVE MONITORING
+                                </span>
+
+                            </div>
+
+                            <div id="cctvGrid" class="cctv-grid">
+                                <!-- Cameras generated by JavaScript -->
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HIGHEST RISK -->
+
+                <div class="panel highest-risk">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Highest Risk Worker</h3>
+                            <p>Priority safety attention</p>
+                        </div>
+
+                        <span class="risk-badge">HIGH RISK</span>
+
+                    </div>
+
+                    <div class="worker-highlight">
+
+                        <div class="worker-avatar">
+                            👷
+                        </div>
+
+                        <div>
+
+                            <h2 id="highestWorker">
+                                Worker ID --
+                            </h2>
+
+                            <p id="highestZone">
+                                Zone: --
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="score">
+
+                        <div>
+                            <span>Risk Score</span>
+                            <strong id="highestScore">0/100</strong>
+                        </div>
+
+                        <div class="score-bar">
+                            <div id="scoreBar"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- WORKERS -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>Worker Risk Monitoring</h3>
+                        <p>Persistent worker-level safety intelligence</p>
+                    </div>
+
+                    <span id="workerCountBadge" class="count-badge">
+                        0 Workers
+                    </span>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Worker</th>
+                                <th>Zone</th>
+                                <th>Risk Level</th>
+                                <th>Risk Score</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="workersTable">
+
+                            <tr>
+                                <td colspan="4" class="loading">
+                                    Loading worker data...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- EVENTS -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>Recent Safety Events</h3>
+                        <p>Latest detected safety intelligence</p>
+                    </div>
+
+                    <span class="live-tag">
+                        LIVE FEED
+                    </span>
+
+                </div>
+
+
+                <div id="eventsContainer" class="events">
+
+                    <div class="loading">
+                        Loading events...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer>
+
+                <span>Warehouse Safety AI v1.0</span>
+
+                <span>
+                    Powered by YOLO • ByteTrack • Predictive Risk Engine
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
